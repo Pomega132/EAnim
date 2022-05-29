@@ -11,7 +11,7 @@ using EAnim.Models;
 
 namespace EAnim.Account
 {
-    public partial class TwoFactorAuthenticationSignIn : System.Web.UI.Page
+    public partial class TwoFactorAuthenticationSignIn : Page
     {
         private ApplicationSignInManager signinManager;
         private ApplicationUserManager manager;
@@ -24,7 +24,7 @@ namespace EAnim.Account
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            var userId = signinManager.GetVerifiedUserId<ApplicationUser, string>();
+            var userId = signinManager.GetVerifiedUserId();
             if (userId == null)
             {
                 Response.Redirect("/Account/Error", true);
@@ -39,7 +39,7 @@ namespace EAnim.Account
             bool rememberMe = false;
             bool.TryParse(Request.QueryString["RememberMe"], out rememberMe);
             
-            var result = signinManager.TwoFactorSignIn<ApplicationUser, string>(SelectedProvider.Value, Code.Text, isPersistent: rememberMe, rememberBrowser: RememberBrowser.Checked);
+            var result = signinManager.TwoFactorSignIn(SelectedProvider.Value, Code.Text, isPersistent: rememberMe, rememberBrowser: RememberBrowser.Checked);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -63,7 +63,7 @@ namespace EAnim.Account
                 Response.Redirect("/Account/Error");
             }
 
-            var user = manager.FindById(signinManager.GetVerifiedUserId<ApplicationUser, string>());
+            var user = manager.FindById(signinManager.GetVerifiedUserId());
             if (user != null)
             {
                 var code = manager.GenerateTwoFactorToken(user.Id, Providers.SelectedValue);

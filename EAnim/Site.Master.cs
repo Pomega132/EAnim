@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Security.Claims;
 using System.Security.Principal;
 using System.Web;
@@ -15,9 +16,11 @@ namespace EAnim
         private const string AntiXsrfTokenKey = "__AntiXsrfToken";
         private const string AntiXsrfUserNameKey = "__AntiXsrfUserName";
         private string _antiXsrfTokenValue;
-
+        public string Version { get; private set; }
         protected void Page_Init(object sender, EventArgs e)
         {
+            Version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+
             // Le code ci-dessous vous aide à vous protéger des attaques XSRF
             var requestCookie = Request.Cookies[AntiXsrfTokenKey];
             Guid requestCookieGuidValue;

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="24a9bacc53ea492bb6da4a2e4636df63" Name="Diagram1" ZoomLevel="64" >
+        <EntityTypeShape EntityType="Datas.Prestation" Width="1.5" PointX="5.375" PointY="2.5" FillColor="128, 255, 128" />
+        <EntityTypeShape EntityType="Datas.TypePrestation" Width="1.5" PointX="2.875" PointY="1.75" FillColor="128, 255, 128" />
+        <EntityTypeShape EntityType="Datas.Contact" Width="1.5" PointX="12.125" PointY="2.75" FillColor="255, 192, 128" />
+        <EntityTypeShape EntityType="Datas.Prestataire" Width="1.5" PointX="0.625" PointY="3" FillColor="255, 192, 128" />
+        <InheritanceConnector EntityType="Datas.Prestataire" ManuallyRouted="true" >
+          <ConnectorPoint PointX="13.239721821080671" PointY="2.75" />
+          <ConnectorPoint PointX="13.239721821080671" PointY="0.572916666666667" />
+          <ConnectorPoint PointX="1.3153630671315837" PointY="0.572916666666667" />
+          <ConnectorPoint PointX="1.3153630671315837" PointY="3" />
+        </InheritanceConnector>
+        <EntityTypeShape EntityType="Datas.Client" Width="1.5" PointX="12.125" PointY="5.75" FillColor="255, 192, 128" />
+        <InheritanceConnector EntityType="Datas.Client" />
+        <AssociationConnector Association="Datas.PrestationPrestataire" />
+        <EntityTypeShape EntityType="Datas.PrestationContact" Width="1.5" PointX="7.625" PointY="1.25" FillColor="255, 192, 128" />
+        <AssociationConnector Association="Datas.PrestationPrestationContact" />
+        <InheritanceConnector EntityType="Datas.PrestationContact" />
+        <EntityTypeShape EntityType="Datas.Lieu" Width="1.5" PointX="8.625" PointY="3.375" FillColor="128, 255, 128" />
+        <AssociationConnector Association="Datas.LieuPrestation" />
+        <AssociationConnector Association="Datas.LieuContact" />
+        <EntityTypeShape EntityType="Datas.Facture" Width="1.5" PointX="5.25" PointY="10.5" FillColor="128, 128, 255" />
+        <AssociationConnector Association="Datas.TypePrestationPrestation" />
+        <AssociationConnector Association="Datas.PrestationClient" />
+        <EntityTypeShape EntityType="Datas.Devis" Width="1.5" PointX="5.25" PointY="7.5" FillColor="128, 128, 255" />
+        <InheritanceConnector EntityType="Datas.Facture" />
+        <AssociationConnector Association="Datas.PrestationDevis" />
+        <AssociationConnector Association="Datas.PrestationFacture" ManuallyRouted="false" >
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Datas.Article" Width="1.5" PointX="12.125" PointY="9.5" FillColor="128, 128, 255" />
+        <EntityTypeShape EntityType="Datas.Unite" Width="1.5" PointX="8.5" PointY="13.125" FillColor="128, 128, 255" />
+        <EntityTypeShape EntityType="Datas.DevisArticle" Width="1.5" PointX="8.375" PointY="9.375" FillColor="128, 128, 255" />
+        <AssociationConnector Association="Datas.UniteDevisArticle" />
+        <AssociationConnector Association="Datas.UniteArticle" />
+        <AssociationConnector Association="Datas.DevisArticleDevis" />
+        <AssociationConnector Association="Datas.ArticleDevisArticle" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

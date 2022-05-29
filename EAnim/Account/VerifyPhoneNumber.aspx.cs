@@ -9,7 +9,7 @@ using Microsoft.AspNet.Identity.Owin;
 
 namespace EAnim.Account
 {
-    public partial class VerifyPhoneNumber : System.Web.UI.Page
+    public partial class VerifyPhoneNumber : Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

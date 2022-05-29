@@ -1,0 +1,27 @@
+﻿<div id="Prestations">
+    <div class="Search"></div>
+    <div class="Datas">
+        <div class="bg-dark" ng-click="EditPrestation({})">
+            <md-icon class="text-light" md-svg-src="/Images/Plus.svg" />
+        </div>
+        <div ng-repeat="prestation in Prestations" ng-class="GetPrestationColor(prestation)">
+            <div>
+                <div>{{prestation.HoraireDebut}}</div>
+                <div>{{prestation.HoraireFin}}</div>
+            </div>
+            <div>
+                <div ng-repeat="client in prestation.Clients">{{client.Prenom}} {{client.Nom}}</div>
+            </div>
+            <div>
+                <div>{{prestation.Lieu.Nom}}</div>
+                <div>{{prestation.Lieu.Adresse1}}</div>
+                <div ng-if="prestation.Lieu.Adresse2">{{prestation.Lieu.Adresse2}}</div>
+                <div>{{prestation.Lieu.Zip}} {{prestation.Lieu.Ville}}</div>
+            </div>
+            <div>
+                <div ng-repeat="prestataire in prestation.Prestataires">{{prestataire.Prenom}} {{prestataire.Nom}}</div>
+            </div>
+            <button type="button" ng-click="EditPrestation(prestation)">Éditer</button>
+        </div>
+    </div>
+</div>

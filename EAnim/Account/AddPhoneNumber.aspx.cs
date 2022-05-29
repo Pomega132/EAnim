@@ -11,7 +11,7 @@ using EAnim.Models;
 
 namespace EAnim.Account
 {
-    public partial class AddPhoneNumber : System.Web.UI.Page
+    public partial class AddPhoneNumber : Page
     {
         protected void PhoneNumber_Click(object sender, EventArgs e)
         {

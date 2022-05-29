@@ -1,0 +1,967 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Datas.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="DatasStoreContainer">
+    <EntitySet Name="Prestation" EntityType="Datas.Store.Prestation" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TypePrestation" EntityType="Datas.Store.TypePrestation" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Contact" EntityType="Datas.Store.Contact" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Lieu" EntityType="Datas.Store.Lieu" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Devis" EntityType="Datas.Store.Devis" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Article" EntityType="Datas.Store.Article" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Unite" EntityType="Datas.Store.Unite" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DevisArticle" EntityType="Datas.Store.DevisArticle" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Contact_Prestataire" EntityType="Datas.Store.Contact_Prestataire" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Contact_PrestationContact" EntityType="Datas.Store.Contact_PrestationContact" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Contact_Client" EntityType="Datas.Store.Contact_Client" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Devis_Facture" EntityType="Datas.Store.Devis_Facture" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PrestationPrestataire" EntityType="Datas.Store.PrestationPrestataire" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="LieuContact" EntityType="Datas.Store.LieuContact" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PrestationClient" EntityType="Datas.Store.PrestationClient" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DevisArticleDevis" EntityType="Datas.Store.DevisArticleDevis" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_PrestationPrestataire_Prestation" Association="Datas.Store.FK_PrestationPrestataire_Prestation">
+      <End Role="Prestation" EntitySet="Prestation" />
+      <End Role="PrestationPrestataire" EntitySet="PrestationPrestataire" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PrestationPrestataire_Prestataire" Association="Datas.Store.FK_PrestationPrestataire_Prestataire">
+      <End Role="Prestataire" EntitySet="Contact_Prestataire" />
+      <End Role="PrestationPrestataire" EntitySet="PrestationPrestataire" />
+    </AssociationSet>
+    <AssociationSet Name="PrestationPrestationContact" Association="Datas.Store.PrestationPrestationContact">
+      <End Role="Prestation" EntitySet="Prestation" />
+      <End Role="PrestationContact" EntitySet="Contact_PrestationContact" />
+    </AssociationSet>
+    <AssociationSet Name="LieuPrestation" Association="Datas.Store.LieuPrestation">
+      <End Role="Lieu" EntitySet="Lieu" />
+      <End Role="Prestation" EntitySet="Prestation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LieuContact_Lieu" Association="Datas.Store.FK_LieuContact_Lieu">
+      <End Role="Lieu" EntitySet="Lieu" />
+      <End Role="LieuContact" EntitySet="LieuContact" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LieuContact_Contact" Association="Datas.Store.FK_LieuContact_Contact">
+      <End Role="Contact" EntitySet="Contact" />
+      <End Role="LieuContact" EntitySet="LieuContact" />
+    </AssociationSet>
+    <AssociationSet Name="TypePrestationPrestation" Association="Datas.Store.TypePrestationPrestation">
+      <End Role="TypePrestation" EntitySet="TypePrestation" />
+      <End Role="Prestation" EntitySet="Prestation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PrestationClient_Prestation" Association="Datas.Store.FK_PrestationClient_Prestation">
+      <End Role="Prestation" EntitySet="Prestation" />
+      <End Role="PrestationClient" EntitySet="PrestationClient" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PrestationClient_Client" Association="Datas.Store.FK_PrestationClient_Client">
+      <End Role="Client" EntitySet="Contact_Client" />
+      <End Role="PrestationClient" EntitySet="PrestationClient" />
+    </AssociationSet>
+    <AssociationSet Name="PrestationDevis" Association="Datas.Store.PrestationDevis">
+      <End Role="Prestation" EntitySet="Prestation" />
+      <End Role="Devis" EntitySet="Devis" />
+    </AssociationSet>
+    <AssociationSet Name="PrestationFacture" Association="Datas.Store.PrestationFacture">
+      <End Role="Prestation" EntitySet="Prestation" />
+      <End Role="Facture" EntitySet="Devis_Facture" />
+    </AssociationSet>
+    <AssociationSet Name="UniteDevisArticle" Association="Datas.Store.UniteDevisArticle">
+      <End Role="Unite" EntitySet="Unite" />
+      <End Role="DevisArticle" EntitySet="DevisArticle" />
+    </AssociationSet>
+    <AssociationSet Name="UniteArticle" Association="Datas.Store.UniteArticle">
+      <End Role="Unite" EntitySet="Unite" />
+      <End Role="Article" EntitySet="Article" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DevisArticleDevis_DevisArticle" Association="Datas.Store.FK_DevisArticleDevis_DevisArticle">
+      <End Role="DevisArticle" EntitySet="DevisArticle" />
+      <End Role="DevisArticleDevis" EntitySet="DevisArticleDevis" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DevisArticleDevis_Devis" Association="Datas.Store.FK_DevisArticleDevis_Devis">
+      <End Role="Devis" EntitySet="Devis" />
+      <End Role="DevisArticleDevis" EntitySet="DevisArticleDevis" />
+    </AssociationSet>
+    <AssociationSet Name="ArticleDevisArticle" Association="Datas.Store.ArticleDevisArticle">
+      <End Role="Article" EntitySet="Article" />
+      <End Role="DevisArticle" EntitySet="DevisArticle" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Prestataire_inherits_Contact" Association="Datas.Store.FK_Prestataire_inherits_Contact">
+      <End Role="Contact" EntitySet="Contact" />
+      <End Role="Prestataire" EntitySet="Contact_Prestataire" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PrestationContact_inherits_Contact" Association="Datas.Store.FK_PrestationContact_inherits_Contact">
+      <End Role="Contact" EntitySet="Contact" />
+      <End Role="PrestationContact" EntitySet="Contact_PrestationContact" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Client_inherits_Contact" Association="Datas.Store.FK_Client_inherits_Contact">
+      <End Role="Contact" EntitySet="Contact" />
+      <End Role="Client" EntitySet="Contact_Client" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Facture_inherits_Devis" Association="Datas.Store.FK_Facture_inherits_Devis">
+      <End Role="Devis" EntitySet="Devis" />
+      <End Role="Facture" EntitySet="Devis_Facture" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Prestation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HoraireDebut" Type="datetime" Nullable="true" />
+    <Property Name="HoraireFin" Type="datetime" Nullable="true" />
+    <Property Name="Etat" Type="int" Nullable="false" />
+    <Property Name="Notes" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Lieu_Id" Type="int" Nullable="true" />
+    <Property Name="TypePrestation_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TypePrestation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nom" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Contact">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nom" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Prenom" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Mail" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Tel" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Lieu">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nom" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Adresse1" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Adresse2" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Ville" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Zip" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="URL" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Devis">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Status" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PrestationDevis_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Article">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ref" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Nom" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PrixUnitaire" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Unite_Id" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Unite">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nom" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DevisArticle">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Quantite" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PrixUnitaire" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Unite_Id" Type="int" Nullable="true" />
+    <Property Name="Article_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Contact_Prestataire">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Siret" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Contact_PrestationContact">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Type" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Prestation_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Contact_Client">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Adresse1" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Adresse2" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Ville" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Zip" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Devis_Facture">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="PrestationFacture_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PrestationPrestataire">
+    <Key>
+      <PropertyRef Name="Prestations_Id" />
+      <PropertyRef Name="Prestataires_Id" />
+    </Key>
+    <Property Name="Prestations_Id" Type="int" Nullable="false" />
+    <Property Name="Prestataires_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LieuContact">
+    <Key>
+      <PropertyRef Name="Lieux_Id" />
+      <PropertyRef Name="Contacts_Id" />
+    </Key>
+    <Property Name="Lieux_Id" Type="int" Nullable="false" />
+    <Property Name="Contacts_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PrestationClient">
+    <Key>
+      <PropertyRef Name="Prestations_Id" />
+      <PropertyRef Name="Clients_Id" />
+    </Key>
+    <Property Name="Prestations_Id" Type="int" Nullable="false" />
+    <Property Name="Clients_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DevisArticleDevis">
+    <Key>
+      <PropertyRef Name="DevisArticles_Id" />
+      <PropertyRef Name="Devis_Id" />
+    </Key>
+    <Property Name="DevisArticles_Id" Type="int" Nullable="false" />
+    <Property Name="Devis_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="PrestationPrestationContact">
+    <End Role="Prestation" Type="Datas.Store.Prestation" Multiplicity="1" />
+    <End Role="PrestationContact" Type="Datas.Store.Contact_PrestationContact" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prestation">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PrestationContact">
+        <PropertyRef Name="Prestation_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LieuPrestation">
+    <End Role="Lieu" Type="Datas.Store.Lieu" Multiplicity="0..1" />
+    <End Role="Prestation" Type="Datas.Store.Prestation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lieu">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Prestation">
+        <PropertyRef Name="Lieu_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TypePrestationPrestation">
+    <End Role="TypePrestation" Type="Datas.Store.TypePrestation" Multiplicity="1" />
+    <End Role="Prestation" Type="Datas.Store.Prestation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypePrestation">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Prestation">
+        <PropertyRef Name="TypePrestation_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PrestationDevis">
+    <End Role="Prestation" Type="Datas.Store.Prestation" Multiplicity="1" />
+    <End Role="Devis" Type="Datas.Store.Devis" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prestation">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Devis">
+        <PropertyRef Name="PrestationDevis_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PrestationFacture">
+    <End Role="Prestation" Type="Datas.Store.Prestation" Multiplicity="1" />
+    <End Role="Facture" Type="Datas.Store.Devis_Facture" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prestation">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Facture">
+        <PropertyRef Name="PrestationFacture_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UniteDevisArticle">
+    <End Role="Unite" Type="Datas.Store.Unite" Multiplicity="0..1" />
+    <End Role="DevisArticle" Type="Datas.Store.DevisArticle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Unite">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DevisArticle">
+        <PropertyRef Name="Unite_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UniteArticle">
+    <End Role="Unite" Type="Datas.Store.Unite" Multiplicity="0..1" />
+    <End Role="Article" Type="Datas.Store.Article" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Unite">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Article">
+        <PropertyRef Name="Unite_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ArticleDevisArticle">
+    <End Role="Article" Type="Datas.Store.Article" Multiplicity="1" />
+    <End Role="DevisArticle" Type="Datas.Store.DevisArticle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Article">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DevisArticle">
+        <PropertyRef Name="Article_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PrestationPrestataire_Prestation">
+    <End Role="Prestation" Type="Datas.Store.Prestation" Multiplicity="1" />
+    <End Role="PrestationPrestataire" Type="Datas.Store.PrestationPrestataire" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prestation">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PrestationPrestataire">
+        <PropertyRef Name="Prestations_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PrestationPrestataire_Prestataire">
+    <End Role="PrestationPrestataire" Type="Datas.Store.PrestationPrestataire" Multiplicity="*" />
+    <End Role="Prestataire" Type="Datas.Store.Contact_Prestataire" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Prestataire">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PrestationPrestataire">
+        <PropertyRef Name="Prestataires_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LieuContact_Lieu">
+    <End Role="Lieu" Type="Datas.Store.Lieu" Multiplicity="1" />
+    <End Role="LieuContact" Type="Datas.Store.LieuContact" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lieu">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LieuContact">
+        <PropertyRef Name="Lieux_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LieuContact_Contact">
+    <End Role="LieuContact" Type="Datas.Store.LieuContact" Multiplicity="*" />
+    <End Role="Contact" Type="Datas.Store.Contact" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Contact">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LieuContact">
+        <PropertyRef Name="Contacts_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PrestationClient_Prestation">
+    <End Role="Prestation" Type="Datas.Store.Prestation" Multiplicity="1" />
+    <End Role="PrestationClient" Type="Datas.Store.PrestationClient" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prestation">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PrestationClient">
+        <PropertyRef Name="Prestations_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PrestationClient_Client">
+    <End Role="PrestationClient" Type="Datas.Store.PrestationClient" Multiplicity="*" />
+    <End Role="Client" Type="Datas.Store.Contact_Client" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PrestationClient">
+        <PropertyRef Name="Clients_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DevisArticleDevis_DevisArticle">
+    <End Role="DevisArticle" Type="Datas.Store.DevisArticle" Multiplicity="1" />
+    <End Role="DevisArticleDevis" Type="Datas.Store.DevisArticleDevis" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DevisArticle">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DevisArticleDevis">
+        <PropertyRef Name="DevisArticles_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DevisArticleDevis_Devis">
+    <End Role="DevisArticleDevis" Type="Datas.Store.DevisArticleDevis" Multiplicity="*" />
+    <End Role="Devis" Type="Datas.Store.Devis" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Devis">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DevisArticleDevis">
+        <PropertyRef Name="Devis_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Prestataire_inherits_Contact">
+    <End Role="Contact" Type="Datas.Store.Contact" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Prestataire" Type="Datas.Store.Contact_Prestataire" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Contact">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Prestataire">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PrestationContact_inherits_Contact">
+    <End Role="Contact" Type="Datas.Store.Contact" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PrestationContact" Type="Datas.Store.Contact_PrestationContact" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Contact">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PrestationContact">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Client_inherits_Contact">
+    <End Role="Contact" Type="Datas.Store.Contact" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Client" Type="Datas.Store.Contact_Client" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Contact">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Client">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Facture_inherits_Devis">
+    <End Role="Devis" Type="Datas.Store.Devis" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Facture" Type="Datas.Store.Devis_Facture" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Devis">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Facture">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Datas" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="DatasContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Prestation" EntityType="Datas.Prestation" />
+          <EntitySet Name="TypePrestation" EntityType="Datas.TypePrestation" />
+          <EntitySet Name="Contact" EntityType="Datas.Contact" />
+          <AssociationSet Name="PrestationPrestataire" Association="Datas.PrestationPrestataire">
+            <End Role="Prestation" EntitySet="Prestation" />
+            <End Role="Prestataire" EntitySet="Contact" />
+          </AssociationSet>
+          <AssociationSet Name="PrestationPrestationContact" Association="Datas.PrestationPrestationContact">
+            <End Role="Prestation" EntitySet="Prestation" />
+            <End Role="PrestationContact" EntitySet="Contact" />
+          </AssociationSet>
+          <EntitySet Name="Lieu" EntityType="Datas.Lieu" />
+          <AssociationSet Name="LieuPrestation" Association="Datas.LieuPrestation">
+            <End Role="Lieu" EntitySet="Lieu" />
+            <End Role="Prestation" EntitySet="Prestation" />
+          </AssociationSet>
+          <AssociationSet Name="LieuContact" Association="Datas.LieuContact">
+            <End Role="Lieu" EntitySet="Lieu" />
+            <End Role="Contact" EntitySet="Contact" />
+          </AssociationSet>
+          <AssociationSet Name="TypePrestationPrestation" Association="Datas.TypePrestationPrestation">
+            <End Role="TypePrestation" EntitySet="TypePrestation" />
+            <End Role="Prestation" EntitySet="Prestation" />
+          </AssociationSet>
+          <AssociationSet Name="PrestationClient" Association="Datas.PrestationClient">
+            <End Role="Prestation" EntitySet="Prestation" />
+            <End Role="Client" EntitySet="Contact" />
+          </AssociationSet>
+          <EntitySet Name="Devis" EntityType="Datas.Devis" />
+          <AssociationSet Name="PrestationDevis" Association="Datas.PrestationDevis">
+            <End Role="Prestation" EntitySet="Prestation" />
+            <End Role="Devis" EntitySet="Devis" />
+          </AssociationSet>
+          <AssociationSet Name="PrestationFacture" Association="Datas.PrestationFacture">
+            <End Role="Prestation" EntitySet="Prestation" />
+            <End Role="Facture" EntitySet="Devis" />
+          </AssociationSet>
+          <EntitySet Name="Article" EntityType="Datas.Article" />
+          <EntitySet Name="Unite" EntityType="Datas.Unite" />
+          <EntitySet Name="DevisArticle" EntityType="Datas.DevisArticle" />
+          <AssociationSet Name="UniteDevisArticle" Association="Datas.UniteDevisArticle">
+            <End Role="Unite" EntitySet="Unite" />
+            <End Role="DevisArticle" EntitySet="DevisArticle" />
+          </AssociationSet>
+          <AssociationSet Name="UniteArticle" Association="Datas.UniteArticle">
+            <End Role="Unite" EntitySet="Unite" />
+            <End Role="Article" EntitySet="Article" />
+          </AssociationSet>
+          <AssociationSet Name="DevisArticleDevis" Association="Datas.DevisArticleDevis">
+            <End Role="DevisArticle" EntitySet="DevisArticle" />
+            <End Role="Devis" EntitySet="Devis" />
+          </AssociationSet>
+          <AssociationSet Name="ArticleDevisArticle" Association="Datas.ArticleDevisArticle">
+            <End Role="Article" EntitySet="Article" />
+            <End Role="DevisArticle" EntitySet="DevisArticle" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Prestation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HoraireDebut" Type="DateTime" Nullable="true" />
+          <Property Name="HoraireFin" Type="DateTime" Nullable="true" />
+          <Property Name="Etat" Type="Datas.E_PrestationEtat" Nullable="false" />
+          <Property Name="Notes" Type="String" Nullable="true" />
+          <NavigationProperty Name="Prestataires" Relationship="Datas.PrestationPrestataire" FromRole="Prestation" ToRole="Prestataire" />
+          <NavigationProperty Name="PrestationContact" Relationship="Datas.PrestationPrestationContact" FromRole="Prestation" ToRole="PrestationContact" />
+          <NavigationProperty Name="Lieu" Relationship="Datas.LieuPrestation" FromRole="Prestation" ToRole="Lieu" />
+          <NavigationProperty Name="TypePrestation" Relationship="Datas.TypePrestationPrestation" FromRole="Prestation" ToRole="TypePrestation" />
+          <NavigationProperty Name="Clients" Relationship="Datas.PrestationClient" FromRole="Prestation" ToRole="Client" />
+          <NavigationProperty Name="Devis" Relationship="Datas.PrestationDevis" FromRole="Prestation" ToRole="Devis" />
+          <NavigationProperty Name="Facture" Relationship="Datas.PrestationFacture" FromRole="Prestation" ToRole="Facture" />
+        </EntityType>
+        <EntityType Name="TypePrestation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom" Type="String" Nullable="false" />
+          <NavigationProperty Name="Prestations" Relationship="Datas.TypePrestationPrestation" FromRole="TypePrestation" ToRole="Prestation" />
+        </EntityType>
+        <EnumType Name="E_PrestationEtat">
+          <Member Name="PREMIER_CONTACT" Value="1" />
+          <Member Name="DEVIS_ENVOYE" Value="2" />
+          <Member Name="DEVIS_SIGNE" Value="4" />
+          <Member Name="RDV_PRIS" Value="8" />
+          <Member Name="CONTRACT_SIGNE" Value="16" />
+          <Member Name="CHEQUE_CAUTION_REMIS" Value="32" />
+          <Member Name="PRESTATION_PAYE" Value="64" />
+          <Member Name="ANNULE" Value="128" />
+        </EnumType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom" Type="String" Nullable="false" />
+          <Property Name="Prenom" Type="String" Nullable="false" />
+          <Property Name="Mail" Type="String" Nullable="true" />
+          <Property Name="Tel" Type="String" Nullable="true" />
+          <NavigationProperty Name="Lieux" Relationship="Datas.LieuContact" FromRole="Contact" ToRole="Lieu" />
+        </EntityType>
+        <EntityType Name="Prestataire" BaseType="Datas.Contact" >
+          <Property Name="Siret" Type="String" Nullable="false" />
+          <NavigationProperty Name="Prestations" Relationship="Datas.PrestationPrestataire" FromRole="Prestataire" ToRole="Prestation" />
+        </EntityType>
+        <EntityType Name="Client" BaseType="Datas.Contact" >
+          <Property Name="Adresse1" Type="String" Nullable="true" />
+          <Property Name="Adresse2" Type="String" Nullable="true" />
+          <Property Name="Ville" Type="String" Nullable="true" />
+          <Property Name="Zip" Type="String" Nullable="true" />
+          <NavigationProperty Name="Prestations" Relationship="Datas.PrestationClient" FromRole="Client" ToRole="Prestation" />
+        </EntityType>
+        <Association Name="PrestationPrestataire">
+          <End Type="Datas.Prestation" Role="Prestation" Multiplicity="*" />
+          <End Type="Datas.Prestataire" Role="Prestataire" Multiplicity="*" />
+        </Association>
+        <EntityType Name="PrestationContact" BaseType="Datas.Contact" >
+          <Property Name="Type" Type="String" Nullable="false" />
+          <NavigationProperty Name="Prestation" Relationship="Datas.PrestationPrestationContact" FromRole="PrestationContact" ToRole="Prestation" />
+        </EntityType>
+        <Association Name="PrestationPrestationContact">
+          <End Type="Datas.Prestation" Role="Prestation" Multiplicity="1" />
+          <End Type="Datas.PrestationContact" Role="PrestationContact" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Lieu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom" Type="String" Nullable="false" />
+          <Property Name="Adresse1" Type="String" Nullable="true" />
+          <Property Name="Adresse2" Type="String" Nullable="true" />
+          <Property Name="Ville" Type="String" Nullable="true" />
+          <Property Name="Zip" Type="String" Nullable="true" />
+          <Property Name="URL" Type="String" Nullable="true" />
+          <NavigationProperty Name="Prestations" Relationship="Datas.LieuPrestation" FromRole="Lieu" ToRole="Prestation" />
+          <NavigationProperty Name="Contacts" Relationship="Datas.LieuContact" FromRole="Lieu" ToRole="Contact" />
+        </EntityType>
+        <Association Name="LieuPrestation">
+          <End Type="Datas.Lieu" Role="Lieu" Multiplicity="0..1" />
+          <End Type="Datas.Prestation" Role="Prestation" Multiplicity="*" />
+        </Association>
+        <Association Name="LieuContact">
+          <End Type="Datas.Lieu" Role="Lieu" Multiplicity="*" />
+          <End Type="Datas.Contact" Role="Contact" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Facture" BaseType="Datas.Devis">
+          <NavigationProperty Name="PrestationFacture" Relationship="Datas.PrestationFacture" FromRole="Facture" ToRole="Prestation" />
+        </EntityType>
+        <Association Name="TypePrestationPrestation">
+          <End Type="Datas.TypePrestation" Role="TypePrestation" Multiplicity="1" />
+          <End Type="Datas.Prestation" Role="Prestation" Multiplicity="*" />
+        </Association>
+        <Association Name="PrestationClient">
+          <End Type="Datas.Prestation" Role="Prestation" Multiplicity="*" />
+          <End Type="Datas.Client" Role="Client" Multiplicity="*" />
+        </Association>
+        <EnumType Name="E_FactureStatus">
+          <Member Name="DEVIS_BROUILLON" Value="1" />
+          <Member Name="DEVIS_ENVOYE" Value="2" />
+          <Member Name="DEVIS_SIGNE" Value="4" />
+          <Member Name="DEVIS_REFFUSE" Value="8" />
+          <Member Name="FACTURE_ENVOYE" Value="16" />
+          <Member Name="FACTURE_PAYE" Value="32" />
+        </EnumType>
+        <EntityType Name="Devis">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Status" Type="String" Nullable="false" />
+          <NavigationProperty Name="PrestationDevis" Relationship="Datas.PrestationDevis" FromRole="Devis" ToRole="Prestation" />
+          <NavigationProperty Name="DevisArticles" Relationship="Datas.DevisArticleDevis" FromRole="Devis" ToRole="DevisArticle" />
+        </EntityType>
+        <Association Name="PrestationDevis">
+          <End Type="Datas.Prestation" Role="Prestation" Multiplicity="1" />
+          <End Type="Datas.Devis" Role="Devis" Multiplicity="*" />
+        </Association>
+        <Association Name="PrestationFacture">
+          <End Type="Datas.Prestation" Role="Prestation" Multiplicity="1" />
+          <End Type="Datas.Facture" Role="Facture" Multiplicity="0..1" />
+        </Association>
+        <EntityType Name="Article">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ref" Type="String" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" />
+          <Property Name="Nom" Type="String" Nullable="false" />
+          <Property Name="PrixUnitaire" Type="String" Nullable="false" />
+          <NavigationProperty Name="Unite" Relationship="Datas.UniteArticle" FromRole="Article" ToRole="Unite" />
+          <NavigationProperty Name="DevisArticles" Relationship="Datas.ArticleDevisArticle" FromRole="Article" ToRole="DevisArticle" />
+        </EntityType>
+        <EntityType Name="Unite">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom" Type="String" Nullable="false" />
+          <NavigationProperty Name="DevisArticle" Relationship="Datas.UniteDevisArticle" FromRole="Unite" ToRole="DevisArticle" />
+          <NavigationProperty Name="Article" Relationship="Datas.UniteArticle" FromRole="Unite" ToRole="Article" />
+        </EntityType>
+        <EntityType Name="DevisArticle">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Quantite" Type="String" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" />
+          <Property Name="PrixUnitaire" Type="String" Nullable="false" />
+          <NavigationProperty Name="Unite" Relationship="Datas.UniteDevisArticle" FromRole="DevisArticle" ToRole="Unite" />
+          <NavigationProperty Name="Devis" Relationship="Datas.DevisArticleDevis" FromRole="DevisArticle" ToRole="Devis" />
+          <NavigationProperty Name="Article" Relationship="Datas.ArticleDevisArticle" FromRole="DevisArticle" ToRole="Article" />
+        </EntityType>
+        <Association Name="UniteDevisArticle">
+          <End Type="Datas.Unite" Role="Unite" Multiplicity="0..1" />
+          <End Type="Datas.DevisArticle" Role="DevisArticle" Multiplicity="*" />
+        </Association>
+        <Association Name="UniteArticle">
+          <End Type="Datas.Unite" Role="Unite" Multiplicity="0..1" />
+          <End Type="Datas.Article" Role="Article" Multiplicity="*" />
+        </Association>
+        <Association Name="DevisArticleDevis">
+          <End Type="Datas.DevisArticle" Role="DevisArticle" Multiplicity="*" />
+          <End Type="Datas.Devis" Role="Devis" Multiplicity="*" />
+        </Association>
+        <Association Name="ArticleDevisArticle">
+          <End Type="Datas.Article" Role="Article" Multiplicity="1" />
+          <End Type="Datas.DevisArticle" Role="DevisArticle" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DatasStoreContainer" CdmEntityContainer="DatasContainer">
+    <EntitySetMapping Name="Prestation">
+      <EntityTypeMapping TypeName="IsTypeOf(Datas.Prestation)">
+        <MappingFragment StoreEntitySet="Prestation">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="HoraireDebut" ColumnName="HoraireDebut" />
+          <ScalarProperty Name="HoraireFin" ColumnName="HoraireFin" />
+          <ScalarProperty Name="Etat" ColumnName="Etat" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TypePrestation">
+      <EntityTypeMapping TypeName="IsTypeOf(Datas.TypePrestation)">
+        <MappingFragment StoreEntitySet="TypePrestation">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Contact">
+      <EntityTypeMapping TypeName="IsTypeOf(Datas.Contact)">
+        <MappingFragment StoreEntitySet="Contact">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="Tel" ColumnName="Tel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(Datas.Prestataire)">
+        <MappingFragment StoreEntitySet="Contact_Prestataire">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Siret" ColumnName="Siret" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(Datas.PrestationContact)">
+        <MappingFragment StoreEntitySet="Contact_PrestationContact">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(Datas.Client)">
+        <MappingFragment StoreEntitySet="Contact_Client">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Adresse1" ColumnName="Adresse1" />
+          <ScalarProperty Name="Adresse2" ColumnName="Adresse2" />
+          <ScalarProperty Name="Ville" ColumnName="Ville" />
+          <ScalarProperty Name="Zip" ColumnName="Zip" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lieu">
+      <EntityTypeMapping TypeName="IsTypeOf(Datas.Lieu)">
+        <MappingFragment StoreEntitySet="Lieu">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="Adresse1" ColumnName="Adresse1" />
+          <ScalarProperty Name="Adresse2" ColumnName="Adresse2" />
+          <ScalarProperty Name="Ville" ColumnName="Ville" />
+          <ScalarProperty Name="Zip" ColumnName="Zip" />
+          <ScalarProperty Name="URL" ColumnName="URL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Devis">
+      <EntityTypeMapping TypeName="IsTypeOf(Datas.Devis)">
+        <MappingFragment StoreEntitySet="Devis">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(Datas.Facture)">
+        <MappingFragment StoreEntitySet="Devis_Facture">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Article">
+      <EntityTypeMapping TypeName="IsTypeOf(Datas.Article)">
+        <MappingFragment StoreEntitySet="Article">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Ref" ColumnName="Ref" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="PrixUnitaire" ColumnName="PrixUnitaire" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Unite">
+      <EntityTypeMapping TypeName="IsTypeOf(Datas.Unite)">
+        <MappingFragment StoreEntitySet="Unite">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DevisArticle">
+      <EntityTypeMapping TypeName="IsTypeOf(Datas.DevisArticle)">
+        <MappingFragment StoreEntitySet="DevisArticle">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Quantite" ColumnName="Quantite" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="PrixUnitaire" ColumnName="PrixUnitaire" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="PrestationPrestataire" TypeName="Datas.PrestationPrestataire" StoreEntitySet="PrestationPrestataire">
+      <EndProperty Name="Prestation">
+        <ScalarProperty Name="Id" ColumnName="Prestations_Id" />
+      </EndProperty>
+      <EndProperty Name="Prestataire">
+        <ScalarProperty Name="Id" ColumnName="Prestataires_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PrestationPrestationContact" TypeName="Datas.PrestationPrestationContact" StoreEntitySet="Contact_PrestationContact">
+      <EndProperty Name="Prestation">
+        <ScalarProperty Name="Id" ColumnName="Prestation_Id" />
+      </EndProperty>
+      <EndProperty Name="PrestationContact">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="LieuPrestation" TypeName="Datas.LieuPrestation" StoreEntitySet="Prestation">
+      <EndProperty Name="Lieu">
+        <ScalarProperty Name="Id" ColumnName="Lieu_Id" />
+      </EndProperty>
+      <EndProperty Name="Prestation">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="Lieu_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="LieuContact" TypeName="Datas.LieuContact" StoreEntitySet="LieuContact">
+      <EndProperty Name="Lieu">
+        <ScalarProperty Name="Id" ColumnName="Lieux_Id" />
+      </EndProperty>
+      <EndProperty Name="Contact">
+        <ScalarProperty Name="Id" ColumnName="Contacts_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="TypePrestationPrestation" TypeName="Datas.TypePrestationPrestation" StoreEntitySet="Prestation">
+      <EndProperty Name="TypePrestation">
+        <ScalarProperty Name="Id" ColumnName="TypePrestation_Id" />
+      </EndProperty>
+      <EndProperty Name="Prestation">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PrestationClient" TypeName="Datas.PrestationClient" StoreEntitySet="PrestationClient">
+      <EndProperty Name="Prestation">
+        <ScalarProperty Name="Id" ColumnName="Prestations_Id" />
+      </EndProperty>
+      <EndProperty Name="Client">
+        <ScalarProperty Name="Id" ColumnName="Clients_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PrestationDevis" TypeName="Datas.PrestationDevis" StoreEntitySet="Devis">
+      <EndProperty Name="Prestation">
+        <ScalarProperty Name="Id" ColumnName="PrestationDevis_Id" />
+      </EndProperty>
+      <EndProperty Name="Devis">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PrestationFacture" TypeName="Datas.PrestationFacture" StoreEntitySet="Devis_Facture">
+      <EndProperty Name="Prestation">
+        <ScalarProperty Name="Id" ColumnName="PrestationFacture_Id" />
+      </EndProperty>
+      <EndProperty Name="Facture">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UniteDevisArticle" TypeName="Datas.UniteDevisArticle" StoreEntitySet="DevisArticle">
+      <EndProperty Name="Unite">
+        <ScalarProperty Name="Id" ColumnName="Unite_Id" />
+      </EndProperty>
+      <EndProperty Name="DevisArticle">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="Unite_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UniteArticle" TypeName="Datas.UniteArticle" StoreEntitySet="Article">
+      <EndProperty Name="Unite">
+        <ScalarProperty Name="Id" ColumnName="Unite_Id" />
+      </EndProperty>
+      <EndProperty Name="Article">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="Unite_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="DevisArticleDevis" TypeName="Datas.DevisArticleDevis" StoreEntitySet="DevisArticleDevis">
+      <EndProperty Name="DevisArticle">
+        <ScalarProperty Name="Id" ColumnName="DevisArticles_Id" />
+      </EndProperty>
+      <EndProperty Name="Devis">
+        <ScalarProperty Name="Id" ColumnName="Devis_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ArticleDevisArticle" TypeName="Datas.ArticleDevisArticle" StoreEntitySet="DevisArticle">
+      <EndProperty Name="Article">
+        <ScalarProperty Name="Id" ColumnName="Article_Id" />
+      </EndProperty>
+      <EndProperty Name="DevisArticle">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,71 @@
+﻿* {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    -ms-flex-direction: column;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+}
+
+#Corps {
+    display: flex;
+    -ms-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+}
+
+#Menu {
+    background-color: var(--primary);
+    color: var(--primary-contrast);
+    min-width: 25%;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#Content {
+    -ms-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+}
+
+#Prestations {
+    display: flex;
+    -ms-flex-direction: column;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+}
+
+    #Prestations .Search {
+        height: 50px;
+    }
+
+    #Prestations .Datas {
+        -ms-flex: 1;
+        -webkit-flex: 1;
+        flex: 1;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 15px;
+        padding:15px;
+    }
+
+        #Prestations .Datas > div {
+            -moz-box-shadow: 0 0 15px black;
+            -webkit-box-shadow: 0 0 15px black;
+            box-shadow: 0 0 15px black;
+            display: flex;
+            justify-content: center;
+            padding:15px;
+        }

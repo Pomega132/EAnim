@@ -9,7 +9,7 @@ using Microsoft.AspNet.Identity.Owin;
 
 namespace EAnim.Account
 {
-    public partial class ManageLogins : System.Web.UI.Page
+    public partial class ManageLogins : Page
     {
         protected string SuccessMessage
         {
