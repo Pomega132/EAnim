@@ -1,0 +1,51 @@
+﻿<md-dialog id="EditLieuDialog">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Lieu</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="cancel()">
+                <md-icon md-svg-src="Images/Cross.svg" aria-label="Close dialog"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+            <md-content layout-padding>
+                <form name="LieuForm" layout="column">
+                    <md-input-container>
+                        <label>Nom</label>
+                        <input ng-model="Lieu.Nom" required />
+                    </md-input-container>
+                    <md-input-container>
+                        <label>Adresse 1</label>
+                        <input ng-model="Lieu.Adresse1" required />
+                    </md-input-container>
+                    <md-input-container>
+                        <label>Adresse 2</label>
+                        <input ng-model="Lieu.Adresse2" />
+                    </md-input-container>
+                    <div layout="row">
+                        <md-input-container flex="70">
+                            <label>Ville</label>
+                            <input ng-model="Lieu.Ville" required />
+                        </md-input-container>
+                        <md-input-container flex>
+                            <label>Code postal</label>
+                            <input ng-model="Lieu.Zip" />
+                        </md-input-container>
+                    </div>
+                    <md-input-container>
+                        <label>URL</label>
+                        <input ng-model="Lieu.URL" />
+                    </md-input-container>
+                </form>
+            </md-content>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+        <md-button ng-show="!LoadingSave" ng-click="answer(Lieu)">
+            Sauvegarder
+        </md-button>
+        <md-progress-circular ng-show="LoadingSave" md-mode="indeterminate"></md-progress-circular>
+    </md-dialog-actions>
+</md-dialog>

@@ -1,37 +1,74 @@
-﻿<md-dialog aria-label="Mango (Fruit)">
-    <form ng-cloak>
-        <md-toolbar>
-            <div class="md-toolbar-tools">
-                <h2>Préstation</h2>
-                <span flex></span>
-                <md-button class="md-icon-button" ng-click="cancel()">
-                    <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
-                </md-button>
-            </div>
-        </md-toolbar>
-
-        <md-dialog-content>
-            <div class="md-dialog-content">
-                <md-content layout-padding>
-                    <div>
-                        <md-input-container>
-                            <label>Debut</label>
-                            <input type="datetime" />  
-                        </md-input-container>
-
-                        <md-input-container>
-                            <label>Email</label>
-                            <input ng-model="user.email" type="email">
-                        </md-input-container>
-                    </div>
-                </md-content>
-            </div>
-        </md-dialog-content>
-
-        <md-dialog-actions layout="row">
-            <md-button ng-click="answer('save')">
-                Sauvegarder
+﻿<md-dialog>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Préstation</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="cancel()">
+                <md-icon md-svg-src="Images/Cross.svg" aria-label="Close dialog"></md-icon>
             </md-button>
-        </md-dialog-actions>
-    </form>
+        </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+        <md-content layout="column" layout-padding>
+            <div layout="row">
+                <div flex>
+                    <md-input-container>
+                        <label>Date Debut</label>
+                        <md-datepicker ng-model="DateDebut" md-max-date="DateFin" />
+                    </md-input-container>
+                    <md-input-container>
+                        <label>Heure</label>
+                        <input type="time" ng-model="DateDebut" />
+                    </md-input-container>
+                </div>
+                <div flex>
+                    <md-input-container>
+                        <label>Date Fin</label>
+                        <md-datepicker ng-model="DateFin" md-min-date="DateDebut" />
+                    </md-input-container>
+                    <md-input-container>
+                        <label>Heure</label>
+                        <input type="time" ng-model="DateFin" />
+                    </md-input-container>
+                </div>
+            </div>
+            <div layout="row">
+                <md-autocomplete md-selected-item="PrestationType" md-autoselect="true"
+                                 md-search-text="SearchPrestationType"
+                                 md-items="prestationType in SearchPrestationTypes(SearchPrestationType)"
+                                 md-item-text="prestationType.Nom"
+                                 md-floating-label="Type de préstation" flex>
+                    <md-item-template>
+                        <span md-highlight-text="SearchPrestationType" md-highlight-flags="i">{{prestationType.Nom}}</span>
+                    </md-item-template>
+                    <md-not-found>
+                        <a ng-click="AddPrestationType(SearchPrestationType)">Créer et séléctionner <strong>{{SearchPrestationType}}</strong>.</a>
+                    </md-not-found>
+                </md-autocomplete>
+                <md-autocomplete md-selected-item="Lieu" md-autoselect="true"
+                                 md-search-text="SearchLieu"
+                                 md-items="lieu in SearchLieux(SearchLieu)"
+                                 md-item-text="lieu.Nom"
+                                 md-floating-label="Lieu de la préstation" flex>
+                    <md-item-template>
+                        <span md-highlight-text="SearchLieu" md-highlight-flags="i">{{lieu.Nom}}</span>
+                    </md-item-template>
+                    <md-not-found>
+                        <a ng-click="AddLieu(SearchLieu)">Créer et séléctionner <strong>{{SearchLieu}}</strong>.</a>
+                    </md-not-found>
+                </md-autocomplete>
+            </div>
+            <md-input-container>
+                <label>Notes</label>
+                <textarea ng-model="user.email" md-maxlength="500" rows="5" md-select-on-focus></textarea>
+            </md-input-container>
+        </md-content>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+        <md-button ng-click="answer('save')">
+            Sauvegarder
+        </md-button>
+    </md-dialog-actions>
 </md-dialog>

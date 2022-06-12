@@ -299,6 +299,7 @@
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
     <Content Include="Templates\Calendrier.html" />
+    <Content Include="Templates\Dialogs\EditLieu.html" />
     <Content Include="Templates\Dialogs\EditPrestation.html" />
     <Content Include="Templates\Prestations.html" />
     <Content Include="ViewSwitcher.ascx" />
@@ -433,6 +434,7 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\LieuController.cs" />
     <Compile Include="Controllers\PrestationController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Default.aspx.cs">
@@ -549,6 +551,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Properties\PublishProfiles\IISProfile.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -589,7 +592,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
+      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
     </VisualStudio>
   </ProjectExtensions>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

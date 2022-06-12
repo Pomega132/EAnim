@@ -47,5 +47,40 @@ namespace EAnim.Controllers
                 return Response<IEnumerable<ProtoPrestation>>.Fail(e);
             }
         }
+
+        [HttpGet, Route("api/PrestationTypes")]
+        public Response<IEnumerable<ProtoTypePrestation>> GetPrestationTypes()
+        {
+            try
+            {
+                return Response.Success(from type in _Db.TypePrestation.ToList()
+                                        select (ProtoTypePrestation)type);
+            }
+            catch (Exception e)
+            {
+                return Response<IEnumerable<ProtoTypePrestation>>.Fail(e);
+            }
+        }
+
+        [HttpGet, Route("api/PrestationType/{nom}")]
+        public Response<ProtoTypePrestation> AddPrestationType(string nom)
+        {
+            try
+            {
+                TypePrestation typePrestation = new TypePrestation
+                {
+                    Nom = nom
+                };
+
+                _Db.TypePrestation.Add(typePrestation);
+                _Db.SaveChanges();
+
+                return Response.Success((ProtoTypePrestation)typePrestation);
+            }
+            catch (Exception e)
+            {
+                return Response<ProtoTypePrestation>.Fail(e);
+            }
+        }
     }
 }

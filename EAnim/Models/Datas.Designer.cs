@@ -1,4 +1,4 @@
-﻿// La génération de code T4 est activée pour le modèle 'C:\Users\Steven\Source\Repos\Pomega132\EAnim\EAnim\Models\Datas.edmx'. 
+﻿// La génération de code T4 est activée pour le modèle 'C:\Users\Steven\source\repos\Pomega132\EAnim\EAnim\Models\Datas.edmx'. 
 // Pour activer la génération de code héritée, définissez la valeur de la propriété
 // du concepteur 'Stratégie de génération de code' sur 'ObjectContext hérité'. Cette propriété est disponible dans la fenêtre Propriétés lorsque le modèle
 //  est ouvert dans le concepteur.
